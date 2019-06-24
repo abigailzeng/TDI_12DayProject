@@ -1,0 +1,8 @@
+gunicorn==19.9.0
+Jinja2==2.9.5
+requests==2.20.0
+Flask==0.12
+bokeh==1.2.0
+tornado==4.4.2
+MarkupSafe==0.23
+beautifulsoup4==4.4.0

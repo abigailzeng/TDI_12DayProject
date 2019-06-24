@@ -1,0 +1,45 @@
+<html>
+<head>
+
+<link
+    href="http://cdn.pydata.org/bokeh/release/bokeh-1.2.0.min.css"
+    rel="stylesheet" type="text/css">
+<link
+    href="http://cdn.pydata.org/bokeh/release/bokeh-widgets-1.2.0.min.css"
+    rel="stylesheet" type="text/css">
+
+<script src="http://cdn.pydata.org/bokeh/release/bokeh-1.2.0.min.js"></script>
+<script src="http://cdn.pydata.org/bokeh/release/bokeh-widgets-1.2.0.min.js"></script>
+
+</head>
+<body>
+<H1>Stock Prices</H1>
+
+<form name="stock" method="post" action ="/" >
+            <select name="ticker">
+            {% for ticker in tickers %}
+                {% if ticker == current_ticker %}
+			<option selected value="{{ ticker }}">{{ ticker }}</option> 
+		{% else %} 
+			<option value="{{ ticker }}">{{ ticker }}</option> 
+		{% endif %}
+            {% endfor %}
+             </select>
+            <select name="month">
+            {% for month in months %}
+                {% if month == current_month %}
+			<option selected value="{{ month }}">{{ month }}</option> 
+		{% else %} 
+			<option value="{{ month }}">{{ month }}</option> 
+		{% endif %}
+            {% endfor %}
+             </select>
+            <br>
+            <input type="submit" value="Submit">
+          </form>
+
+{{ script|safe }}
+{{ div|safe }}
+
+</body>
+</html>

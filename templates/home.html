@@ -2,20 +2,20 @@
 <head>
 
 <link
-    href="http://cdn.pydata.org/bokeh/release/bokeh-1.2.0.min.css"
+    href="https://cdn.pydata.org/bokeh/release/bokeh-1.2.0.min.css"
     rel="stylesheet" type="text/css">
 <link
-    href="http://cdn.pydata.org/bokeh/release/bokeh-widgets-1.2.0.min.css"
+    href="https://cdn.pydata.org/bokeh/release/bokeh-widgets-1.2.0.min.css"
     rel="stylesheet" type="text/css">
 
-<script src="http://cdn.pydata.org/bokeh/release/bokeh-1.2.0.min.js"></script>
-<script src="http://cdn.pydata.org/bokeh/release/bokeh-widgets-1.2.0.min.js"></script>
+<script src="https://cdn.pydata.org/bokeh/release/bokeh-1.2.0.min.js"></script>
+<script src="https://cdn.pydata.org/bokeh/release/bokeh-widgets-1.2.0.min.js"></script>
 
 </head>
 <body>
 <H1>Stock Prices</H1>
 
-<form name="stock" method="post" action ="/" >
+<form name="stock" action ="/" >
             <select name="ticker">
             {% for ticker in tickers %}
                 {% if ticker == current_ticker %}

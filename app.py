@@ -16,7 +16,10 @@ from bokeh.plotting import figure, output_file, save
 #Connect the app
 app = Flask(__name__)
 
-app.vars = {}
+#app.vars = {}
+ticker_list = pd.read_csv('ticker_list.csv')
+tickers = ticker_list['ticker'].tolist()
+months = ['2018-09','2018-10','2018-11','2018-12']
 
 #Helper Functions
 def get_dates(which_month):
@@ -114,9 +117,9 @@ def make_plot(source, title):
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    ticker_list = pd.read_csv('ticker_list.csv')
-    tickers = ticker_list['ticker'].tolist()
-    months = ['2018-09','2018-10','2018-11','2018-12']
+    #ticker_list = pd.read_csv('ticker_list.csv')
+    #tickers = ticker_list['ticker'].tolist()
+    #months = ['2018-09','2018-10','2018-11','2018-12']
     if request.method == "GET":
         print('get method')
         current_ticker = request.args.get('ticker')
@@ -127,8 +130,8 @@ def index():
             current_month = '2018-09'
         print(current_ticker, current_month)
         source = get_dataset(current_ticker, current_month)
-        app.vars['data'] = source
-        app.vars['input'] = (current_ticker, current_month)
+        #app.vars['data'] = source
+        #app.vars['input'] = (current_ticker, current_month)
         plot = make_plot(source,"Ticker Look-up: Stock Price of {}".format(current_ticker))
         script, div = components(plot)
 
@@ -139,13 +142,15 @@ current_ticker=current_ticker, current_month=current_month)
         print('post method') 
         current_ticker = request.form.get('ticker')
         current_month = request.form.get('month')
-        app.vars['input'] = (current_ticker, current_month)
+        #app.vars['input'] = (current_ticker, current_month)
         print(current_ticker, current_month)
         return redirect(url_for('graph'))
 
 @app.route('/graph')
 def graph():
-    current_ticker, current_month  = app.vars['input']
+    #current_ticker, current_month  = app.vars['input']
+    current_ticker = request.form.get('ticker')
+    current_month = request.form.get('month')
     source = get_dataset(current_ticker, current_month)
     plot = make_plot(source,"Stock Price of {}".format(current_ticker))
     script, div = components(plot)

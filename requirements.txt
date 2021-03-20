@@ -1,5 +1,5 @@
 gunicorn==19.9.0
-Jinja2==2.9.5
+Jinja2==2.11.3
 requests==2.20.0
 Flask==0.12
 bokeh==1.2.0
